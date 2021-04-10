@@ -88,9 +88,9 @@ def sendData_TCP(host, port, data, user, passw):
         data = data.decode('utf-8')
 
     if "OK" in data:
-        return True
+        return True, data
     else:
-        return False
+        return False, data
 
 
 def main():
@@ -98,7 +98,7 @@ def main():
     _input.prtcl = RawDataInputToUpper(_input.prtcl)
     _input.host = socket.gethostbyname(_input.host)
     if _input.prtcl == "UDP":
-        re = sendData_UDP(
+        re, _ = sendData_UDP(
                 _input.host, 
                 _input.port, 
                 _input.data, 
@@ -108,9 +108,10 @@ def main():
             print("Yeah it run")
             return 0
         else:
+            print(_)
             return -1
     elif _input.prtcl == "TCP":
-        re = sendData_TCP(
+        re, _ = sendData_TCP(
                 _input.host, 
                 _input.port, 
                 _input.data,
@@ -120,5 +121,7 @@ def main():
             print("Yeah it run")
             return 0
         else:
+            print(_)
             return -1
-main()
+if __name__ == "__main__":
+    main()
