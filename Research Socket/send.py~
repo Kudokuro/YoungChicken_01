@@ -98,24 +98,14 @@ def main():
     _input.prtcl = RawDataInputToUpper(_input.prtcl)
     _input.host = socket.gethostbyname(_input.host)
     if _input.prtcl == "UDP":
-        re = sendData_UDP(
-                _input.host, 
-                _input.port, 
-                _input.data, 
-                _input.user, 
-                _input.pwd)
+        re = sendData_UDP(_input.host, _input.port, _input.data)
         if re:
             print("Yeah it run")
             return 0
         else:
             return -1
     elif _input.prtcl == "TCP":
-        re = sendData_TCP(
-                _input.host, 
-                _input.port, 
-                _input.data,
-                _input.user,
-                _input.pwd)
+        re = sendData_TCP(_input.host, _input.port, _input.data)
         if re:
             print("Yeah it run")
             return 0
